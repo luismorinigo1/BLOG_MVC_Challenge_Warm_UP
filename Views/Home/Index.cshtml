@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BLOG.Models.posteos>
+
+@{
+    ViewBag.Title = "Posteos";
+}
+
+<div class="jumbotron"> <h2>BLOG DE POSTEOS</h2> </div>
+
+<p>
+    @Html.ActionLink("Crear Nuevo Posteo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contenido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contenido)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Imagen)*@
+            @*<img src="@Url.Content(@System.Convert.ToBase64String(item.Imagen))"width="80" height="80"/>*@
+            @*<img src="@Url.Action("getImage","Home",@System.Convert.ToBase64String(item.Imagen)))" alt="Imagen" width="80" height="80" />*@
+            @*<img width="100" src="@Url.Action("getImage","Home",@System.Convert.ToBase64String(item.Imagen)))" />*@
+            <img src="@Html.DisplayFor(modelItem => item.Imagen)" alt="Imagen" width="80" height="80" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+            
+        </td>
+        
+    </tr>
+}
+
+</table>
